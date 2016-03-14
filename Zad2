@@ -1,0 +1,261 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+        }
+    }
+
+    public abstract class Animal
+    {
+        public string Name { get; set; }
+        public float Weight { get; set; }
+        public bool HaveFur { get; set; }
+
+        public abstract string Sound();
+        public abstract string Trick();
+        public abstract int CountLegs();
+    }
+
+    class Circus : ICircus
+    {
+        public List<Animal> Animals = new List<Animal>;
+
+        public string Name { get; set; }
+
+        public Circus()
+        {
+            Animals.Add(new Cat());
+            Animals.Add(new Cat());
+            Animals.Add(new Pony());
+            Animals.Add(new Giraffe());
+            Animals.Add(new Ant());
+            Animals.Add(new Elephant());
+            Animals.Add(new Pony());
+        }
+
+        public string AnimalsIntroduction()
+        {
+            string sounds = "";
+
+            foreach(Animal animal in Animals)
+            {
+                sounds += animal.Sound();
+            }
+
+            return sounds;
+        }
+
+        public int Patter(int howMuch)
+        {
+            int patters = 0;
+
+            foreach(Animal animal in Animals)
+            {
+                patters += animal.CountLegs();
+            }
+
+            return patters * howMuch;
+        }
+
+        public string Show()
+        {
+            string tricks = "";
+
+            foreach (Animal animal in Animals)
+            {
+                tricks += animal.Trick();
+            }
+
+            return tricks;
+        }
+    }
+
+    class Zoo :IZoo
+    {
+        private List<Animal> animals;
+
+        public List<Animal> Animals { get; set; }
+
+        public string Name { get; set; }
+
+        public Zoo()
+        {
+            Animals.Add(new Cat());
+            Animals.Add(new Giraffe());
+            Animals.Add(new Ant());
+            Animals.Add(new Elephant());
+            Animals.Add(new Cat());
+            Animals.Add(new Giraffe());
+            Animals.Add(new Ant());
+            Animals.Add(new Elephant());
+            Animals.Add(new Cat());
+            Animals.Add(new Giraffe());
+        }
+
+        public string Sounds()
+        {
+            string sounds = "";
+
+            foreach (Animal animal in Animals)
+            {
+                sounds += animal.Sound();
+            }
+
+            return sounds;
+        }
+
+        
+    }
+
+    class Cat : Animal
+    {
+        private string color;
+
+        public string Color { get; set; }
+
+        public Cat()
+        {
+            Name = "cat";
+            HaveFur = true;
+        }
+
+        public override string Sound()
+        {
+            return "Meow";
+        }
+
+        public override string Trick()
+        {
+            return "Catcatcat";
+        }
+
+        public override int CountLegs()
+        {
+            return 4;
+        }
+    }
+
+    class Pony : Animal
+    {
+        private bool isMagic;
+
+        public bool IsMagic { get; set; }
+
+        public Pony()
+        {
+            Name = "pony";
+            HaveFur = true;
+        }
+
+        public override string Sound()
+        {
+            return "Yyyyyyy";
+        }
+
+        public override string Trick()
+        {
+            return "Ponypony";
+        }
+
+        public override int CountLegs()
+        {
+            return 4;
+        }
+    }
+
+    class Ant : Animal
+    {
+        private bool isQueen;
+
+        public bool IsQueen { get; set; }
+
+        public Ant()
+        {
+            Name = "ant";
+            HaveFur = false;
+        }
+
+        public override string Sound()
+        {
+            return "N";
+        }
+
+        public override string Trick()
+        {
+            return "Antantant";
+        }
+
+        public override int CountLegs()
+        {
+            return 6;
+        }
+    }
+
+    class Elephant : Animal
+    {
+        public Elephant()
+        {
+            Name = "elephant";
+            HaveFur = false;
+        }
+
+        public override string Sound()
+        {
+            return "Tutututut";
+        }
+
+        public override string Trick()
+        {
+            return "djhbcshd";
+        }
+
+        public override int CountLegs()
+        {
+            return 4;
+        }
+    }
+
+    class Giraffe : Animal
+    {
+        public Giraffe()
+        {
+            Name = "giraffe";
+            HaveFur = true;
+        }
+
+        public override string Sound()
+        {
+            return "Ggg";
+        }
+
+        public override string Trick()
+        {
+            return "Ggiirraaffee";
+        }
+
+        public override int CountLegs()
+        {
+            return 4;
+        }
+    }
+
+    interface ICircus
+    {
+        string AnimalsIntroduction();
+        string Show();
+        int Patter(int howMuch);
+    }
+
+    interface IZoo
+    {
+        string Sounds();
+    }
+}
