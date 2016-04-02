@@ -59,6 +59,8 @@ namespace Zad2
     {
         [OperationContract]
         Starship PullStarship(Starship ship);
+
+        [OperationContract]
         string UltimateAnswer();
     }
 
@@ -82,4 +84,4 @@ namespace Zad2
             return ship;
         }
     }
-} 
+}
